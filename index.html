@@ -116,7 +116,7 @@
     <div class="container">
         <div class="header">
             <img src="logo.png" alt="Logo" class="logo">
-            <h1>深圳市招生办公室</h1>
+            <h1>深圳市教育局招生办公室</h1>
         </div>
         <h2>2024年深圳市生地会考成绩查询</h2>
         <label for="examId">请输入准考证号:</label>
@@ -153,7 +153,7 @@
             }
 
             if (!examId.startsWith('24')) {
-                resultDiv.innerHTML = '<p class="error">格式不正确，准考证号应以24开头</p>';
+                resultDiv.innerHTML = '<p class="error">格式不正确！</p>';
                 return;
             }
 
@@ -174,7 +174,7 @@
                         <p>生物成绩：${biologyScore}</p>
                         <p>地理成绩：${geographyScore}</p>
                         <p>总成绩：${totalScore}</p>
-                        <button onclick="showDisclaimer()">查询详细分数</button>
+                        <button onclick="showDisclaimer()">查看分数详情</button>
                         <button onclick="location.reload()">返回</button>
                     `;
 
@@ -185,7 +185,7 @@
         }
 
         function showDisclaimer() {
-            document.getElementById('result').innerHTML = '<p id="disclaimer">本"查询网站"仅供娱乐,成绩为随机生成。同时,您的个人信息并没有被上传,所有数据处理仅在本地完成,欢迎转发!</p>';
+            document.getElementById('result').innerHTML = '<p id="disclaimer">本"查询网站"仅供娱乐,成绩为随机生成。同时,您的个人信息并没有被上传,所有数据处理仅在本地完成,欢迎转发!祝你生地一百，金榜题名！——bokobring \n网站由claude3 AI创建！</p>';
         }
 
         function setCookie(name, value, days) {
