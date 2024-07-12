@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2024年深圳市生地会考成绩查询</title>
+    <title>2024年深圳市生物地理学业水平考试成绩查询</title>
     <style>
         body {
             font-family: "Microsoft YaHei", Arial, sans-serif;
@@ -63,97 +63,45 @@
             border-radius: 4px;
         }
         #disclaimer {
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 10px;
+            font-weight: normal;
             color: #c62828;
             margin-top: 20px;
         }
         .error {
             color: red;
         }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 500px;
-            text-align: center;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>内部查询入口，请勿外传！2024年9月1日后解除机密！</p>
-        </div>
-    </div>
-
     <div class="container">
         <div class="header">
             <img src="logo.png" alt="Logo" class="logo">
             <h1>深圳市教育局招生考试办公室</h1>
         </div>
-        <h2>2024年深圳市生地会考成绩查询</h2>
+        <h2>2024年深圳市生物地理学业水平考试成绩查询</h2>
+        <label for="name">请输入姓名:</label>
+        <input type="text" id="name">
         <label for="examId">请输入准考证号:</label>
         <input type="text" id="examId">
         <button onclick="checkScore()">确认</button>
         <div id="result"></div>
+        <p id="disclaimer">©深圳市教育局 版权所有</p>
     </div>
 
     <script>
-        window.onload = function() {
-            var modal = document.getElementById("myModal");
-            var span = document.getElementsByClassName("close")[0];
-            
-            modal.style.display = "block";
-            
-            span.onclick = function() {
-                modal.style.display = "none";
-            }
-            
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-        }
-
         function checkScore() {
+            const name = document.getElementById('name').value;
             const examId = document.getElementById('examId').value;
             const resultDiv = document.getElementById('result');
 
-            if (!examId) {
-                resultDiv.innerHTML = '<p class="error">请输入准考证号</p>';
+            if (!name || !examId) {
+                resultDiv.innerHTML = '<p class="error">请输入姓名和准考证号</p>';
                 return;
             }
 
             if (!examId.startsWith('24')) {
-                resultDiv.innerHTML = '<p class="error">格式不正确！</p>';
+                resultDiv.innerHTML = '<p class="error">准考证号格式不正确！</p>';
                 return;
             }
 
@@ -170,6 +118,7 @@
                     const totalScore = biologyScore + geographyScore;
 
                     const scoreText = `
+                        <p>姓名：${name}</p>
                         <p>准考证号：${examId}</p>
                         <p>生物成绩：${biologyScore}</p>
                         <p>地理成绩：${geographyScore}</p>
